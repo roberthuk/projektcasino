@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <img src="{% static 'images/logo.PNG' %}" alt="Logo kasyna" width="25%">
+    <h1>Witaj w WebCasino!</h1>
+
+    
+
+    {% if user.is_authenticated %}
+        <p>Zalogowany jako: <strong>{{ username }}</strong></p>
+        <p>Saldo: <strong>{{ saldo }} PLN</strong></p>
+        <a href="{% url 'logout' %}">Wyloguj się</a>
+    {% else %}
+        <p>Nie jesteś zalogowany.</p>
+        <a href="{% url 'login' %}">Zaloguj się</a> |
+        <a href="{% url 'register' %}">Zarejestruj się</a>
+    {% endif %}
+</body>
+</html>
